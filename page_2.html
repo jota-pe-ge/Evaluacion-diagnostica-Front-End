@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="description" content="Evaluación diagnóstica de Introducción al Desarrollo Front End con HTML, CSS y JavaScript" />
+        <meta name="keywords" content="HTML, CSS, JavaScript" />
+        <meta name="author" content="Joaquin Perez" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="style.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js" integrity="sha512-N4kV7GkNv7QR7RX9YF/olywyIgIwNvfEe2nZtfyj73HdjCUkAfOBDbcuJ/cTaN04JKRnw1YG1wnUyNKMsNgg3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <title>Ejemplo 2 - Creador de olas</title>
+    </head>
+    <body>
+        <div id="uno"><a href="index.html">PORTADA</a></div>
+        <div id="otro"><a href="page_1.html">01</a> / <strong><a href="page_2.html">02</a></strong> / <a href="page_3.html">03</a></div>
+        <script>
+            // function setup() {
+            //     createCanvas(windowWidth - 50, windowHeight - 50).position(25, 30).style("z-index", -1);
+            // }
+            // function draw() {
+            //     background(225);
+            // }
+            // function windowResized() {
+            //     resizeCanvas(windowWidth - 50, windowHeight - 50);
+            // }
+            let t = 0; // variable de tiempo
+
+            function setup() {
+              createCanvas(windowWidth - 50, windowHeight - 50).position(25, 30).style("z-index", -1);
+              btn = createButton ('Guardar imagen');
+              btn.position(windowWidth - 120,windowHeight - 30);
+              btn.mousePressed(atacazoartistico);
+              noStroke();
+              fill(255);
+            }
+
+            function draw() {
+              background(10, 10); // fondo translúcido (crea estelas)
+
+              // grilla de elipses
+              for (let x = 0; x <= width; x = x + 30) {
+                for (let y = 0; y <= height; y = y + 30) {
+                  // punto de partida de cada círculo depende de posición del ratón
+                  const anguloX = map(mouseX, 0, width, -4 * PI, 4 * PI, true);
+                  const anguloY = map(mouseY, 0, height, -4 * PI, 4 * PI, true);
+                  // y también varía según la posición de la partícula
+                  const angulo = anguloX * (x / width) + anguloY * (y / height);
+
+                  // cada partícula se mueve en forma circular
+                  const myX = x + 20 * cos(2 * PI * t + angulo);
+                  const myY = y + 20 * sin(2 * PI * t + angulo);
+
+                  ellipse(myX, myY, 10); // dibujar partícula
+                }
+              }
+
+              t = t + 0.01; // actualizar tiempo
+            }
+            function windowResized() {
+                resizeCanvas(windowWidth - 50, windowHeight - 50);
+            }
+            function atacazoartistico() {
+              saveCanvas("imagen", "png")
+            }
+        </script>
+    </body>
+</html>

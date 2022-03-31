@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="description" content="Evaluación diagnóstica de Introducción al Desarrollo Front End con HTML, CSS y JavaScript" />
+        <meta name="keywords" content="HTML, CSS, JavaScript" />
+        <meta name="author" content="Joaquin Perez" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="style.css" rel="stylesheet" />
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            h1 {
+              font-style: normal;
+              font-weight: 4;
+              font-size: calc(1rem + 2vw);
+              padding: 3rem 0 3rem 1rem;
+            }
+            p {
+                font-size: calc(1.5rem + 0.5vw);
+                padding: 1rem;
+            }
+            @media (min-width: 800px) {
+                p {
+                    max-width: 100%;
+                }
+            }
+        </style>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"
+            integrity="sha512-N4kV7GkNv7QR7RX9YF/olywyIgIwNvfEe2nZtfyj73HdjCUkAfOBDbcuJ/cTaN04JKRnw1YG1wnUyNKMsNgg3g=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <title>Portada de evaluación</title>
+    </head>
+    <body>
+        <div id="uno"><strong><a href="index.html">PORTADA</a></strong></div>
+        <div id="otro"><a href="page_1.html">01</a> / <a href="page_2.html">02</a> / <a href="page_3.html">03</a></div>
+        <div>
+            <h1><span id="saludo"></span> profesor. Yo, el alumno <span id="nombre"></span>, presento mi evaluación diagnóstica de Front-End</h1>
+            <p>Presentaré una serie de elementos interactivos que más me llamaron la atención, extraídos de los <a href=https://p5js.org/es/examples/>ejemplos de p5.js</a> en donde se utiliza el movimiento del ratón para su interacción, con un matiz de colores blanco y negro.</p>
+            <p>La razón de la selección de estos ejemplos es por su atractivo visual, algo que me llamó mucho la atención al utilizar el apartado de p5.js. Vi en sus amplias posibilidades un manejo en la creación de código para, por ejemplo, páginas web, que sería muy interesante de usar a futuro, a la hora de crear contenido para artistas y personas que deseen establecer su imagen virtual en un formato interactivo.</p>
+            <p>Cada ejemplo posee un botón de guardado, si quiere guardar la imagen de manera estática, se debe hacer click con el botón derecho del mouse para mantenerla quieta, y luego hacer click a "Guardar imagen".</p>
+            <!-- <p>La razón de esta selección</p>
+            <p>es debido a su llamativa presentación,</p>
+            <p>algo que llamó mi atención</p>
+            <p>al momento de elegir esta función</p>
+            <p>sus características rozan con la imaginación</p>
+            <p>que poseen los sueños, en su abstracción.</p>
+            <p>Mi idea a futuro con este curso es lograr mi superación</p>
+            <p>en temas de ensayo y error, sin llegar a la frustración</p>
+            <p>por eso tomo este ejercicio como una motivación</p>
+            <p>para luego no caer en la decepción</p>
+            <p>y crear contenido con una gran admiración</p> -->
+        </div>
+        <script>
+        var opciones = ["Hola", "Saludos", "Que tal"];
+            function setup() {
+                createCanvas(windowWidth - 50, windowHeight - 50)
+                    .position(25, 30)
+                    .style("z-index", -1);
+                document.getElementById("nombre").textContent += "Joaquin Perez";
+                document.getElementById("saludo").textContent += random(opciones);
+              }
+
+            function draw() {
+                background(225);
+                textSize(50);
+                text("👾",mouseX,mouseY);
+            }
+            function windowResized() {
+                resizeCanvas(windowWidth - 50, windowHeight - 50);
+            }
+        </script>
+    </body>
+</html>

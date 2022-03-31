@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="description" content="Evaluación diagnóstica de Introducción al Desarrollo Front End con HTML, CSS y JavaScript" />
+        <meta name="keywords" content="HTML, CSS, JavaScript" />
+        <meta name="author" content="Joaquin Perez" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="style.css" rel="stylesheet" />
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"
+            integrity="sha512-N4kV7GkNv7QR7RX9YF/olywyIgIwNvfEe2nZtfyj73HdjCUkAfOBDbcuJ/cTaN04JKRnw1YG1wnUyNKMsNgg3g=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <title>Ejemplo 1 - Revelación de matriz</title>
+    </head>
+    <body>
+        <div id="uno"><a href="index.html">PORTADA</a></div>
+        <div id="otro">
+            <strong><a href="page_1.html">01</a></strong> / <a href="page_2.html">02</a> / <a href="page_3.html">03</a>
+        </div>
+        <script>
+            let max_distance;
+
+            function setup() {
+                createCanvas(windowWidth - 50, windowHeight - 50)
+                    .position(25, 30)
+                    .style("z-index", -1);
+                btn = createButton("Guardar imagen");
+                btn.position(windowWidth - 120, windowHeight - 30);
+                btn.mousePressed(atacazoartistico);
+                noStroke();
+                max_distance = dist(0, 0, width, height);
+            }
+
+            function draw() {
+                background(0);
+
+                for (let i = 0; i <= width; i += 20) {
+                    for (let j = 0; j <= height; j += 20) {
+                        let size = dist(mouseX, mouseY, i, j);
+                        size = (size / max_distance) * 66;
+                        ellipse(i, j, size, size);
+                    }
+                }
+            }
+            function windowResized() {
+                resizeCanvas(windowWidth - 50, windowHeight - 50);
+            }
+            function atacazoartistico() {
+                saveCanvas("imagen", "png");
+            }
+        </script>
+    </body>
+</html>
